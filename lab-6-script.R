@@ -21,9 +21,16 @@ fish_long <-
 
 # Question A t-test -------------------------------------------------------
 
+fish_ttest <- t.test(species ~ location, data = fish_long)
+fish_ttest$estimate
 
 # Question B difference in means -----------------------------------------
 
+diff(fish_ttest$estimate)
 
 # Question C histograms --------------------------------------------------
 
+fish_long %>% 
+  ggplot(aes(x = location, y = tributary)) +
+  geom_jitter(aes(color = location), 
+  shape = 16, alpha = 0.9, width = 0.9) 
